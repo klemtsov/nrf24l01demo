@@ -32,7 +32,7 @@ public class Nrf24l01demoApplication {
 
 		springApplication.run(args);
 
-		SpringApplication.run(Nrf24l01demoApplication.class, args);
+		//SpringApplication.run(Nrf24l01demoApplication.class, args);
 
 	}
 }
