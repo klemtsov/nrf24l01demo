@@ -13,13 +13,13 @@ public class Nrf24l01Service {
 
     public Nrf24l01Service() {
         nrf24L01 = NRF24L01.getInstance();
-        nrf24L01.setReceiveListener(new ReceiveListener() {
+        /*nrf24L01.setReceiveListener(new ReceiveListener() {
             @Override
             public void dataReceived(int[] data) {
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 System.out.printf("%s - Данные получены %s\n", dateFormat.format(new Date()), data);
             }
-        });
+        });*/
     }
 
     public NRF24L01 getNrf24L01() {

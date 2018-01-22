@@ -339,7 +339,7 @@ public class NRF24L01 implements IRegister, Runnable {
 			return ;
 		}
 		running=true;
-
+		System.out.println("NRF24l01 started");
 		irqWatchThread=new Thread(this, "NRF24L01+ Daemon");
 		irqWatchThread.setPriority(Thread.MAX_PRIORITY);//in high priority
 		irqWatchThread.setDaemon(true);//daemon
