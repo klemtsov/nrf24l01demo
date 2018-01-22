@@ -18,6 +18,7 @@ import java.util.Date;
 @SpringBootApplication
 public class Nrf24l01demoApplication {
 
+
 	public static void main(String[] args) {
 		SpringApplication springApplication = new SpringApplication(Nrf24l01demoApplication.class);
 
@@ -25,8 +26,10 @@ public class Nrf24l01demoApplication {
 			@Override
 			public void onApplicationEvent(ContextClosedEvent contextClosedEvent) {
 				System.out.println("SHUTDOWN nrf24L01...");
-				Nrf24l01Service nrf24l01Service =  contextClosedEvent.getApplicationContext().getBean(Nrf24l01Service.class);
-				nrf24l01Service.getNrf24L01().shutdown();
+				//nrf24L01Service.shutdown();
+				NRF24L01 nrf24l01Service =  contextClosedEvent.getApplicationContext().getBean(NRF24L01.class);
+				nrf24l01Service.shutdown();
+				System.out.println("SHUTDOWN nrf24L01 succeeded");
 			}
 		});
 
