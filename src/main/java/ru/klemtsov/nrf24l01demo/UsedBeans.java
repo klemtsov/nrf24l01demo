@@ -12,9 +12,9 @@ public class UsedBeans {
     public NRF24L01 nrf24L01Service(){
         NRF24L01 nrf = NRF24L01.getInstance();
         nrf.start();
-        int[] txaddr = new int[]{0,0,0,0,1};
+        int[] txaddr = new int[]{0,0,0,0,2};
         int[] txdata = new int[]{1};
-        nrf.send(96, 1, 100, 5, txaddr, 1, txdata);
+        nrf.send(1, 1, 100, 5, txaddr, 1, txdata);
         return nrf;
     }
 }
