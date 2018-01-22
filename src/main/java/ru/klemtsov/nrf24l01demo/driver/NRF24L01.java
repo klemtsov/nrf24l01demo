@@ -145,6 +145,7 @@ public class NRF24L01 implements IRegister, Runnable {
 	 * @return return the singleton instance
 	 */
 	public static final NRF24L01 getInstance() {
+		System.out.println("Запуск getInstance");
 		return nrf;
 	}
 	/**
