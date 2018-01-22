@@ -9,6 +9,8 @@ public class UsedBeans {
 
     @Bean
     public NRF24L01 getNRF24L01Service(){
-        return NRF24L01.getInstance();
+        NRF24L01 nrf = NRF24L01.getInstance();
+        nrf.start();
+        return nrf;
     }
 }

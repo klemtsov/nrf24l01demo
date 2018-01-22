@@ -18,44 +18,18 @@ import java.util.Date;
 @SpringBootApplication
 public class Nrf24l01demoApplication {
 
-	private static NRF24L01 nrf24L01Service;
-
 	public static void main(String[] args) {
 		SpringApplication springApplication = new SpringApplication(Nrf24l01demoApplication.class);
-		springApplication.addListeners(new ApplicationListener<ContextStartedEvent>() {
-										   @Override
-										   public void onApplicationEvent(ContextStartedEvent event) {
-											   System.out.println("Запуск сервиса");
-											   NRF24L01 nrf24L01Service =  event.getApplicationContext().getBean(NRF24L01.class);
-											   nrf24L01Service.start();
-											   nrf24L01Service.setReceiveListener(new ReceiveListener() {
-												   @Override
-												   public void dataReceived(int[] data) {
-													   DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-													   System.out.printf("%s - Данные получены %s\n", dateFormat.format(new Date()), data);
-												   }
-											   });
-										   }
-									   }
-
-		);
 
 		springApplication.addListeners(new ApplicationListener<ContextClosedEvent>() {
 			@Override
 			public void onApplicationEvent(ContextClosedEvent contextClosedEvent) {
 				System.out.println("SHUTDOWN nrf24L01...");
-				if (nrf24L01Service != null) {
-					nrf24L01Service.shutdown();
-				}
+				Nrf24l01Service nrf24l01Service =  contextClosedEvent.getApplicationContext().getBean(Nrf24l01Service.class);
+				nrf24l01Service.getNrf24L01().shutdown();
 			}
 		});
-		springApplication.addListeners( new ApplicationListener<ContextRefreshedEvent>() {
-			@Override
-			public void onApplicationEvent(ContextRefreshedEvent applicationEvent) {
-				System.out.println("refreshed event");
-			}
-		});
+
 		springApplication.run(args);
 
 		SpringApplication.run(Nrf24l01demoApplication.class, args);
