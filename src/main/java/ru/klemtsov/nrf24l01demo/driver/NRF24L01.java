@@ -102,7 +102,7 @@ public class NRF24L01 implements IRegister, Runnable {
 	/**
 	 * default data width 16, NRF support 32 in max
 	 */
-	private static final short RECEIVE_DATA_WIDTH = 16;
+	private static final short RECEIVE_DATA_WIDTH = 1;
 	/**
 	 * default local listening chanel 96
 	 */
