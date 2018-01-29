@@ -31,7 +31,7 @@ public class Nrf24l01Service {
                     nrf24L01.start();
                     started = true;
                 }
-                int[] txaddr = new int[]{0, 0, 0x01, 0x04, 0};
+                int[] txaddr = new int[]{0, 0, 0, 0, 1};
                 int[] txdata = new int[]{1};
                 nrf24L01.send(122, 1, 10, 5, txaddr, 1, txdata);
                 System.out.printf("sended %s\n", new Date());
