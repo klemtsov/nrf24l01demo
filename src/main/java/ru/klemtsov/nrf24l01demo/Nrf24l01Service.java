@@ -24,24 +24,31 @@ public class Nrf24l01Service {
             }
         });
         thread = new Thread(() -> {
-            if (stop){
-                System.out.printf("Stopped\n");
-                return;
+            while (!stop) {
+                if (stop) {
+                    System.out.printf("Stopped\n");
+                    return;
+                }
+                nrf24L01.start();
+                int[] txaddr = new int[]{0, 0, 0, 0, 31};
+                int[] txdata = new int[]{1};
+                nrf24L01.send(1, 1, 10, 5, txaddr, 1, txdata);
+                System.out.printf("sended\n");
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-            nrf24L01.start();
-            int[] txaddr = new int[]{0,0,0,0,31};
-            int[] txdata = new int[]{1};
-            nrf24L01.send(1, 1, 10, 5, txaddr, 1, txdata);
-            System.out.printf("sended\n");
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
+            ;
+
+            System.out.printf("Stopped\n");
+        }
+        );
+
     }
 
-    public void start(){
+    public void start() {
         thread.start();
     }
 
@@ -49,7 +56,7 @@ public class Nrf24l01Service {
         return nrf24L01;
     }
 
-    public void shutdown(){
+    public void shutdown() {
         nrf24L01.shutdown();
     }
 
