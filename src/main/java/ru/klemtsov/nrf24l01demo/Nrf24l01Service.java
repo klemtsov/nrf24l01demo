@@ -45,5 +45,9 @@ public class Nrf24l01Service {
         return nrf24L01;
     }
 
+    public void shutdown(){
+        nrf24L01.shutdown();
+    }
+
 
 }

@@ -106,12 +106,12 @@ public class NRF24L01 implements IRegister, Runnable {
 	/**
 	 * default local listening chanel 96
 	 */
-	private int localRFChanel=1;
+	private int localRFChanel=96;
 	/**
 	 * default local RF address which is one byte length n 5
 	 */
 	//private int[] localRFAddress={ 53, 69, 149, 231, 231 };
-	private int[] localRFAddress={ 0, 0, 0, 0, 2 };
+	private int[] localRFAddress={ 0, 0, 0, 0, 30 };
 	/**
 	 * one flag marking thread running
 	 */

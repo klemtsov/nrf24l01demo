@@ -10,12 +10,12 @@ import ru.klemtsov.nrf24l01demo.driver.NRF24L01;
 @SpringBootApplication
 public class Nrf24l01demoApplication {
 
-    private static NRF24L01 nrf24l01Service;
+    private static Nrf24l01Service nrf24l01Service;
 
     public static void main(String[] args) {
         SpringApplication springApplication = new SpringApplication(Nrf24l01demoApplication.class);
         springApplication.addListeners((ApplicationListener<ContextStartedEvent>)event ->{
-            nrf24l01Service = event.getApplicationContext().getBean(NRF24L01.class);
+            nrf24l01Service = event.getApplicationContext().getBean(Nrf24l01Service.class);
             System.out.println("START nrf24L01 succeeded");
 
         });
