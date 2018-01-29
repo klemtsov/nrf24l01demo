@@ -36,7 +36,7 @@ public class Nrf24l01Service {
                 }
                 int[] txaddr = new int[]{0, 0, 0, 0, 31};
                 int[] txdata = new int[]{1};
-                nrf24L01.send(1, 1, 10, 5, txaddr, 1, txdata);
+                nrf24L01.send(96, 1, 10, 5, txaddr, 1, txdata);
                 System.out.printf("sended\n");
                 try {
                     Thread.sleep(500);
