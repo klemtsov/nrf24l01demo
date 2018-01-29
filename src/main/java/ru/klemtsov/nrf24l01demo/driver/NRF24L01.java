@@ -310,6 +310,7 @@ public class NRF24L01 implements IRegister, Runnable {
 		if (digitalRead(IRQ) == 0) {
 			System.out.printf("IRQ = 0\n");
 			status = readRegister(R_REGISTER + STATUS);
+			System.out.printf("status = %s\n", status);
 			if ((status & 0x40) == 0x40) {
 				// read FIFO
 				status = readRegister(R_REGISTER + FIFO_STATUS);
