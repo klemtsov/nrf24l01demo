@@ -17,12 +17,9 @@ public class Nrf24l01Service {
 
     public Nrf24l01Service() {
         nrf24L01 = NRF24L01.getInstance();
-        nrf24L01.setReceiveListener(new ReceiveListener() {
-            @Override
-            public void dataReceived(int[] data) {
-                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                System.out.printf("%s - Данные получены %s\n", dateFormat.format(new Date()), data);
-            }
+        nrf24L01.setReceiveListener(data -> {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            System.out.printf("%s - Данные получены %s\n", dateFormat.format(new Date()), data);
         });
         thread = new Thread(() -> {
             while (!stop) {
@@ -37,7 +34,7 @@ public class Nrf24l01Service {
                 int[] txaddr = new int[]{0, 0, 0, 0, 0x31};
                 int[] txdata = new int[]{1};
                 nrf24L01.send(96, 1, 10, 5, txaddr, 1, txdata);
-                System.out.printf("sended\n");
+                System.out.printf("sended $s\n", new Date());
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
