@@ -18,6 +18,7 @@ public class Nrf24l01demoApplication {
         springApplication.addListeners((ApplicationListener<ContextRefreshedEvent>) event ->{
             nrf24l01Service = event.getApplicationContext().getBean(Nrf24l01Service.class);
             System.out.println("START nrf24L01 succeeded");
+            nrf24l01Service.start();
 
         });
 

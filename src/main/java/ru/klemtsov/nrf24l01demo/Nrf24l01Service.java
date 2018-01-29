@@ -41,6 +41,10 @@ public class Nrf24l01Service {
         });
     }
 
+    public void start(){
+        thread.start();
+    }
+
     public NRF24L01 getNrf24L01() {
         return nrf24L01;
     }
