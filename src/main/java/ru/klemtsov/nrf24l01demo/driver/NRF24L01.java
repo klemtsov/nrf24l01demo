@@ -1,5 +1,7 @@
 package ru.klemtsov.nrf24l01demo.driver;
 
+import com.pi4j.wiringpi.SoftPwm;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -306,6 +308,7 @@ public class NRF24L01 implements IRegister, Runnable {
 	private final boolean isDataAvaid() {
 		int status;
 		if (digitalRead(IRQ) == 0) {
+			System.out.printf("IRQ = 0\n");
 			status = readRegister(R_REGISTER + STATUS);
 			if ((status & 0x40) == 0x40) {
 				// read FIFO
