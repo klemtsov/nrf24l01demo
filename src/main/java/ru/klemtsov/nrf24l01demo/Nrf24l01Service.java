@@ -11,18 +11,39 @@ import java.util.Date;
 public class Nrf24l01Service {
     private NRF24L01 nrf24L01;
 
+    private Thread thread;
+    private boolean stop = false;
+
     public Nrf24l01Service() {
         nrf24L01 = NRF24L01.getInstance();
-        /*nrf24L01.setReceiveListener(new ReceiveListener() {
+        nrf24L01.setReceiveListener(new ReceiveListener() {
             @Override
             public void dataReceived(int[] data) {
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 System.out.printf("%s - Данные получены %s\n", dateFormat.format(new Date()), data);
             }
-        });*/
+        });
+        thread = new Thread(() -> {
+            if (stop){
+                System.out.printf("Stopped\n");
+                return;
+            }
+            nrf24L01.start();
+            int[] txaddr = new int[]{0,0,0,0,31};
+            int[] txdata = new int[]{1};
+            nrf24L01.send(1, 1, 10, 5, txaddr, 1, txdata);
+            System.out.printf("sended\n");
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     public NRF24L01 getNrf24L01() {
         return nrf24L01;
     }
+
+
 }
