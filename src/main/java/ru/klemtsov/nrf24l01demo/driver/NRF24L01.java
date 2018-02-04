@@ -80,19 +80,19 @@ public class NRF24L01 implements IRegister, Runnable {
 	/**
 	 * irq GPIO_2
 	 */
-	private static final int IRQ = 0;
+	private static final int IRQ = 2;
 	/**
 	 * miso GPIO_12
 	 */
-	private static final int MISO = 13;
+	private static final int MISO = 12;
 	/**
 	 * ce GPIO_11
 	 */
-	private static final int CE = 10;
+	private static final int CE = 11;
 	/**
 	 * mosi GPIO_13
 	 */
-	private static final int MOSI = 12;
+	private static final int MOSI = 13;
 	/**
 	 * sclk GPIO_14
 	 */
@@ -100,7 +100,7 @@ public class NRF24L01 implements IRegister, Runnable {
 	/**
 	 * csn GPIO_0
 	 */
-	private static final int CSN = 6;
+	private static final int CSN = 0;
 	/**
 	 * default data width 16, NRF support 32 in max
 	 */
@@ -108,7 +108,7 @@ public class NRF24L01 implements IRegister, Runnable {
 	/**
 	 * default local listening chanel 96
 	 */
-	private int localRFChanel=122;
+	private int localRFChanel=96;
 	/**
 	 * default local RF address which is one byte length n 5
 	 */
@@ -249,7 +249,7 @@ public class NRF24L01 implements IRegister, Runnable {
 		flushRx();
 
 		digitalWrite(LED, 1);
-		System.out.printf("after init");
+		System.out.printf("after init\n\n");
 		System.out.printf("status register %d\n", readRegister(STATUS));
 		System.out.printf("config register %d\n", readRegister(CONFIG));
 		System.out.printf("RX_ADDR_P0 register %d\n", readRegister(RX_ADDR_P0));
