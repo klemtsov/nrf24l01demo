@@ -80,19 +80,19 @@ public class NRF24L01 implements IRegister, Runnable {
 	/**
 	 * irq GPIO_2
 	 */
-	private static final int IRQ = 2;
+	private static final int IRQ = 0;
 	/**
 	 * miso GPIO_12
 	 */
-	private static final int MISO = 12;
+	private static final int MISO = 13;
 	/**
 	 * ce GPIO_11
 	 */
-	private static final int CE = 11;
+	private static final int CE = 10;
 	/**
 	 * mosi GPIO_13
 	 */
-	private static final int MOSI = 13;
+	private static final int MOSI = 12;
 	/**
 	 * sclk GPIO_14
 	 */
@@ -100,7 +100,7 @@ public class NRF24L01 implements IRegister, Runnable {
 	/**
 	 * csn GPIO_0
 	 */
-	private static final int CSN = 0;
+	private static final int CSN = 6;
 	/**
 	 * default data width 16, NRF support 32 in max
 	 */
@@ -112,8 +112,8 @@ public class NRF24L01 implements IRegister, Runnable {
 	/**
 	 * default local RF address which is one byte length n 5
 	 */
-	//private int[] localRFAddress={ 53, 69, 149, 231, 231 };
-	private int[] localRFAddress={ 0, 0, 0, 0, 0x01 };
+	private int[] localRFAddress={ 53, 69, 149, 231, 231 };
+	//private int[] localRFAddress={ 0, 0, 0, 0, 0x01 };
 
 	/**
 	 * one flag marking thread running
@@ -228,6 +228,16 @@ public class NRF24L01 implements IRegister, Runnable {
 		digitalWrite(CE, 0);
 		digitalWrite(CSN, 1);
 		digitalWrite(SCLK, 0);
+
+		System.out.printf("status register $x", readRegister(STATUS));
+		System.out.printf("config register $x", readRegister(CONFIG));
+		System.out.printf("RX_ADDR_P0 register $x", readRegister(RX_ADDR_P0));
+		System.out.printf("RX_ADDR_P1 register $x", readRegister(RX_ADDR_P1));
+		System.out.printf("RX_ADDR_P2 register $x", readRegister(RX_ADDR_P2));
+		System.out.printf("RX_ADDR_P3 register $x", readRegister(RX_ADDR_P3));
+		System.out.printf("RX_ADDR_P4 register $x", readRegister(RX_ADDR_P4));
+		System.out.printf("RX_ADDR_P5 register $x", readRegister(RX_ADDR_P5));
+
 
 		writeRegister((W_REGISTER+EN_AA), 0x01);
 		writeRegister((W_REGISTER+EN_RXADDR), 0x01); // enable channel 0
