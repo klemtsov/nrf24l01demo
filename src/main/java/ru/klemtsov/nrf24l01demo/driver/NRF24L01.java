@@ -327,6 +327,7 @@ public class NRF24L01 implements IRegister, Runnable {
 
 	private final boolean isDataAvaid() {
 		int status;
+		System.out.printf("isDataAvaid\n");
 		if (digitalRead(IRQ) == 0) {
 			System.out.printf("IRQ = 0\n");
 			status = readRegister(R_REGISTER + STATUS);
