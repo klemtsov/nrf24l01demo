@@ -250,8 +250,8 @@ public class NRF24L01 implements IRegister, Runnable {
 
 		digitalWrite(LED, 1);
 		System.out.printf("after init\n\n");
-		System.out.printf("status register %d\n", readRegister(STATUS));
-		System.out.printf("config register %d\n", readRegister(CONFIG));
+		System.out.printf("status register %x\n", readRegister(STATUS));
+		System.out.printf("config register %x\n", readRegister(CONFIG));
 		System.out.printf("RX_ADDR_P0 register %x\n", readRegister(RX_ADDR_P0));
 		System.out.printf("RX_ADDR_P1 register %x\n", readRegister(RX_ADDR_P1));
 		System.out.printf("RX_ADDR_P2 register %x\n", readRegister(RX_ADDR_P2));
