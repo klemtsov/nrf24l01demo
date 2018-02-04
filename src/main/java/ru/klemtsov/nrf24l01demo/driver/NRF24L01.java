@@ -229,14 +229,14 @@ public class NRF24L01 implements IRegister, Runnable {
 		digitalWrite(CSN, 1);
 		digitalWrite(SCLK, 0);
 
-		System.out.printf("status register %d\n", readRegister(STATUS));
-		System.out.printf("config register %d\n", readRegister(CONFIG));
-		System.out.printf("RX_ADDR_P0 register %d\n", readRegister(RX_ADDR_P0));
-		System.out.printf("RX_ADDR_P1 register %d\n", readRegister(RX_ADDR_P1));
-		System.out.printf("RX_ADDR_P2 register %d\n", readRegister(RX_ADDR_P2));
-		System.out.printf("RX_ADDR_P3 register %d\n", readRegister(RX_ADDR_P3));
-		System.out.printf("RX_ADDR_P4 register %d\n", readRegister(RX_ADDR_P4));
-		System.out.printf("RX_ADDR_P5 register %d\n", readRegister(RX_ADDR_P5));
+		System.out.printf("status register %x\n", readRegister(STATUS));
+		System.out.printf("config register %x\n", readRegister(CONFIG));
+		System.out.printf("RX_ADDR_P0 register %x\n", readRegister(RX_ADDR_P0));
+		System.out.printf("RX_ADDR_P1 register %x\n", readRegister(RX_ADDR_P1));
+		System.out.printf("RX_ADDR_P2 register %x\n", readRegister(RX_ADDR_P2));
+		System.out.printf("RX_ADDR_P3 register %x\n", readRegister(RX_ADDR_P3));
+		System.out.printf("RX_ADDR_P4 register %x\n", readRegister(RX_ADDR_P4));
+		System.out.printf("RX_ADDR_P5 register %x\n", readRegister(RX_ADDR_P5));
 
 
 		writeRegister((W_REGISTER+EN_AA), 0x01);
@@ -252,12 +252,12 @@ public class NRF24L01 implements IRegister, Runnable {
 		System.out.printf("after init\n\n");
 		System.out.printf("status register %d\n", readRegister(STATUS));
 		System.out.printf("config register %d\n", readRegister(CONFIG));
-		System.out.printf("RX_ADDR_P0 register %d\n", readRegister(RX_ADDR_P0));
-		System.out.printf("RX_ADDR_P1 register %d\n", readRegister(RX_ADDR_P1));
-		System.out.printf("RX_ADDR_P2 register %d\n", readRegister(RX_ADDR_P2));
-		System.out.printf("RX_ADDR_P3 register %d\n", readRegister(RX_ADDR_P3));
-		System.out.printf("RX_ADDR_P4 register %d\n", readRegister(RX_ADDR_P4));
-		System.out.printf("RX_ADDR_P5 register %d\n", readRegister(RX_ADDR_P5));
+		System.out.printf("RX_ADDR_P0 register %x\n", readRegister(RX_ADDR_P0));
+		System.out.printf("RX_ADDR_P1 register %x\n", readRegister(RX_ADDR_P1));
+		System.out.printf("RX_ADDR_P2 register %x\n", readRegister(RX_ADDR_P2));
+		System.out.printf("RX_ADDR_P3 register %x\n", readRegister(RX_ADDR_P3));
+		System.out.printf("RX_ADDR_P4 register %x\n", readRegister(RX_ADDR_P4));
+		System.out.printf("RX_ADDR_P5 register %x\n", readRegister(RX_ADDR_P5));
 	}
 	/**
 	 * write given byte data to SPI protocol, see https://en.wikipedia.org/wiki/SPI
